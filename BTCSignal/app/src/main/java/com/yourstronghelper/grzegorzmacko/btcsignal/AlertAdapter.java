@@ -13,12 +13,10 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
     private List<Alert> list;
     private Context context;
 
-    TextView currentFoodName,
-            currentCost,
-            quantityText,
-            addMeal,
-            subtractMeal,
-            removeMeal;
+    TextView mExchange,
+            mCourse,
+            mPerPoints,
+            mEnableAlarm;
 
     public AlertAdapter(Context context, List<Alert> myOrders) {
         super(context, 0, myOrders);
@@ -35,22 +33,24 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             );
         }
 
-        final Alert currentFood = getItem(position);
+        final Alert currentAlarm = getItem(position);
 
-        currentFoodName = (TextView)listItemView.findViewById(R.id.selected_food_name);
-        currentCost = (TextView)listItemView.findViewById(R.id.selected_food_amount);
-        subtractMeal = (TextView)listItemView.findViewById(R.id.minus_meal);
-        quantityText = (TextView)listItemView.findViewById(R.id.quantity);
-        addMeal = (TextView)listItemView.findViewById(R.id.plus_meal);
-        removeMeal = (TextView)listItemView.findViewById(R.id.delete_item);
 
-        /*//Set the text of the meal, amount and quantity
-        currentFoodName.setText(currentFood.getmName());
-        currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
-        quantityText.setText("x "+ currentFood.getmQuantity());*/
+
+        mExchange = (TextView)listItemView.findViewById(R.id.selected_food_name);
+        mCourse = (TextView)listItemView.findViewById(R.id.selected_food_amount);
+        mPerPoints = (TextView)listItemView.findViewById(R.id.minus_meal);
+        mEnableAlarm = (TextView)listItemView.findViewById(R.id.quantity);
+
+
+        //Set the text of the meal, amount and quantity
+        mExchange.setText(currentAlarm.getExchange());
+        mCourse.setText(currentAlarm.getCourse());
+        mPerPoints.setText("x "+ currentAlarm.getPerPoints());
+        mEnableAlarm.setText("x "+ currentAlarm.getEnableAlarm());
 
         //OnClick listeners for all the buttons on the ListView Item
-        addMeal.setOnClickListener(new View.OnClickListener() {
+        mEnableAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                /* currentFood.addToQuantity();
@@ -60,7 +60,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             }
         });
 
-        subtractMeal.setOnClickListener(new View.OnClickListener() {
+        mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                /* currentFood.removeFromQuantity();
@@ -70,13 +70,13 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             }
         });
 
-        removeMeal.setOnClickListener(new View.OnClickListener() {
+        /*removeMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*list.remove(position);
-                notifyDataSetChanged();*/
+                *//*list.remove(position);
+                notifyDataSetChanged();*//*
             }
-        });
+        });*/
 
         return listItemView;
     }
