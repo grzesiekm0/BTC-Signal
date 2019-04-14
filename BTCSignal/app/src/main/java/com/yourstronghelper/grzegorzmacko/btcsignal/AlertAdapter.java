@@ -53,30 +53,32 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         mEnableAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* currentFood.addToQuantity();
-                quantityText.setText("x "+ currentFood.getmQuantity());
-                currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
-                notifyDataSetChanged();*/
+                //mEnableAlarm.setText("00");
+                //quantityText.setText("x "+ currentFood.getmQuantity());
+                //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
+                currentAlarm.setEnableAlarm(4);
+                notifyDataSetChanged();
             }
         });
 
         mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* currentFood.removeFromQuantity();
-                quantityText.setText("x "+currentFood.getmQuantity());
-                currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
-                notifyDataSetChanged();*/
+                //currentFood.removeFromQuantity();
+
+                mPerPoints.setText("xxx!");
+                //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
+                notifyDataSetChanged();
             }
         });
 
-        /*removeMeal.setOnClickListener(new View.OnClickListener() {
+        mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                *//*list.remove(position);
-                notifyDataSetChanged();*//*
+                list.remove(position);
+                notifyDataSetChanged();
             }
-        });*/
+        });
 
         return listItemView;
     }
