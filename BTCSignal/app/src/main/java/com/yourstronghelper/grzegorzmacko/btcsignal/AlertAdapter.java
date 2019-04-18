@@ -10,18 +10,17 @@ import android.widget.TextView;
 import java.util.List;
 
 public class AlertAdapter extends ArrayAdapter<Alert> {
-    private List<Alert> list;
-    private Context context;
+    private List<Alert> mList;
+    private Context mContext;
 
-    TextView mExchange,
-            mCourse,
-            mPerPoints,
-            mEnableAlarm;
+    TextView mPhoneNumber;
+    TextView mCourse;
+    TextView mEnableAlarm;
 
     public AlertAdapter(Context context, List<Alert> myOrders) {
         super(context, 0, myOrders);
-        this.list = myOrders;
-        this.context = context;
+        this.mList = myOrders;
+        this.mContext = context;
     }
 
 
@@ -37,17 +36,15 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
 
 
-        mExchange = (TextView)listItemView.findViewById(R.id.selected_food_name);
-        mCourse = (TextView)listItemView.findViewById(R.id.selected_food_amount);
-        mPerPoints = (TextView)listItemView.findViewById(R.id.minus_meal);
-        mEnableAlarm = (TextView)listItemView.findViewById(R.id.quantity);
-
+        mPhoneNumber = (TextView)listItemView.findViewById(R.id.phoneNumber);
+        mCourse = (TextView)listItemView.findViewById(R.id.course);
+        mEnableAlarm = (TextView)listItemView.findViewById(R.id.enableAlarm);
 
         //Set the text of the meal, amount and quantity
-        mExchange.setText(currentAlarm.getExchange());
+        mPhoneNumber.setText(currentAlarm.getPhoneNumber());
         mCourse.setText(currentAlarm.getCourse());
-        mPerPoints.setText("x "+ currentAlarm.getPerPoints());
         mEnableAlarm.setText("x "+ currentAlarm.getEnableAlarm());
+
 
         //OnClick listeners for all the buttons on the ListView Item
         mEnableAlarm.setOnClickListener(new View.OnClickListener() {
@@ -61,21 +58,21 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             }
         });
 
-        mExchange.setOnClickListener(new View.OnClickListener() {
+        mPhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //currentFood.removeFromQuantity();
 
-                mPerPoints.setText("xxx!");
+                mEnableAlarm.setText("xxx!");
                 //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
                 notifyDataSetChanged();
             }
         });
 
-        mExchange.setOnClickListener(new View.OnClickListener() {
+        mPhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                list.remove(position);
+                mList.remove(position);
                 notifyDataSetChanged();
             }
         });
