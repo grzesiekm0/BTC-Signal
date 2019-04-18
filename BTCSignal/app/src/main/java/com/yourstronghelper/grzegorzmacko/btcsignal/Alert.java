@@ -4,24 +4,22 @@ package com.yourstronghelper.grzegorzmacko.btcsignal;
 import java.io.Serializable;
 
 public class Alert implements Serializable {
-    private String exchange;
+    private String phoneNumber;
     private String course;
-    private int perPoints;
     private int enableAlarm;
 
-    public Alert(String exchange, String course, int perPoints, int enableAlarm) {
-        this.exchange = exchange;
+    public Alert(String phoneNumber, String course, int enableAlarm) {
+        this.phoneNumber = phoneNumber;
         this.course = course;
-        this.perPoints = perPoints;
         this.enableAlarm = enableAlarm;
     }
 
-    public String getExchange() {
-        return exchange;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setExchange(String exchange) {
-        this.exchange = exchange;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getCourse() {
@@ -30,14 +28,6 @@ public class Alert implements Serializable {
 
     public void setCourse(String course) {
         this.course = course;
-    }
-
-    public int getPerPoints() {
-        return perPoints;
-    }
-
-    public void setPerPoints(int perPoints) {
-        this.perPoints = perPoints;
     }
 
     public int getEnableAlarm() {
