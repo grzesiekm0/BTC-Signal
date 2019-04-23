@@ -13,9 +13,10 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
     private List<Alert> mList;
     private Context mContext;
 
-    TextView mPhoneNumber;
+    TextView mExchange;
     TextView mCourse;
     TextView mEnableAlarm;
+    TextView mCurrency;
 
     public AlertAdapter(Context context, List<Alert> myOrders) {
         super(context, 0, myOrders);
@@ -36,46 +37,46 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
 
 
-        mPhoneNumber = (TextView)listItemView.findViewById(R.id.phoneNumber);
+        mExchange = (TextView)listItemView.findViewById(R.id.exchange);
         mCourse = (TextView)listItemView.findViewById(R.id.course);
-        mEnableAlarm = (TextView)listItemView.findViewById(R.id.enableAlarm);
+        mCurrency = (TextView)listItemView.findViewById(R.id.currency);
 
         //Set the text of the meal, amount and quantity
-        mPhoneNumber.setText(currentAlarm.getPhoneNumber());
+        mExchange.setText(currentAlarm.getExchange());
         mCourse.setText(currentAlarm.getCourse());
-        mEnableAlarm.setText("x "+ currentAlarm.getEnableAlarm());
+        mCurrency.setText("x "+ currentAlarm.getCurrency());
 
 
         //OnClick listeners for all the buttons on the ListView Item
-        mEnableAlarm.setOnClickListener(new View.OnClickListener() {
+        mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //mEnableAlarm.setText("00");
                 //quantityText.setText("x "+ currentFood.getmQuantity());
                 //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
-                currentAlarm.setEnableAlarm(4);
+                currentAlarm.setExchange("Bitmex");
                 notifyDataSetChanged();
             }
         });
 
-        mPhoneNumber.setOnClickListener(new View.OnClickListener() {
+        mCurrency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //currentFood.removeFromQuantity();
 
-                mEnableAlarm.setText("xxx!");
+                mCurrency.setText("xxx!");
                 //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
                 notifyDataSetChanged();
             }
         });
 
-        mPhoneNumber.setOnClickListener(new View.OnClickListener() {
+        /*mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mList.remove(position);
                 notifyDataSetChanged();
             }
-        });
+        });*/
 
         return listItemView;
     }
