@@ -59,7 +59,7 @@ public class LoginDatabaseAdapter {
             db = dbHelper.getWritableDatabase();
             long result=db.insert("User", null, newValues);
             System.out.print(result);
-            Toast.makeText(context, "User Info Saved", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Sukces", Toast.LENGTH_LONG).show();
         }catch(Exception ex) {
             System.out.println("Exceptions " +ex);
             Log.e("Note", "One row entered");
