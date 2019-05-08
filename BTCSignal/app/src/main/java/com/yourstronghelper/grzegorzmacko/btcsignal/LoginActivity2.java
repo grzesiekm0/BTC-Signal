@@ -61,11 +61,15 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
     private EditText mPhoneNumberView;
     private View mProgressView;
     private View mLoginFormView;
+    LoginDatabaseAdapter loginDataBaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
+        //Get instance datebase
+        loginDataBaseAdapter=new LoginDatabaseAdapter(getApplicationContext());
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
         // Set up the login form.
         mNameView = (AutoCompleteTextView) findViewById(R.id.name);
         populateAutoComplete();
@@ -153,7 +157,7 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
         mPhoneNumberView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mNameView.getText().toString();
+        String name = mNameView.getText().toString();
         String phoneNumber = mPhoneNumberView.getText().toString();
 
         boolean cancel = false;
@@ -161,18 +165,18 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
 
         // Check for a valid phoneNumber, if the user entered one.
         if (!TextUtils.isEmpty(phoneNumber) && !isPhoneNumberValid(phoneNumber)) {
-            mPhoneNumberView.setError(getString(R.string.error_invalid_password));
+            mPhoneNumberView.setError(getString(R.string.error_invalid_phone_number));
             focusView = mPhoneNumberView;
             cancel = true;
         }
 
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        // Check for a valid name address.
+        if (TextUtils.isEmpty(name)) {
             mNameView.setError(getString(R.string.error_field_required));
             focusView = mNameView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
-            mNameView.setError(getString(R.string.error_invalid_email));
+        } else if (!isEmailValid(name)) {
+            mNameView.setError(getString(R.string.error_invalid_name));
             focusView = mNameView;
             cancel = true;
         }
@@ -185,19 +189,20 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, phoneNumber);
+            loginDataBaseAdapter.insertEntry(name,phoneNumber);
+            mAuthTask = new UserLoginTask(name, phoneNumber);
             mAuthTask.execute((Void) null);
         }
     }
 
-    private boolean isEmailValid(String email) {
+    private boolean isEmailValid(String name) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return name.length()>4;
     }
 
-    private boolean isPhoneNumberValid(String password) {
+    private boolean isPhoneNumberValid(String phoneNumber) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return phoneNumber.length() == 9;
     }
 
     /**
