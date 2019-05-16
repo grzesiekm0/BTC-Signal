@@ -192,6 +192,7 @@ public class LoginActivity2 extends AppCompatActivity implements LoaderCallbacks
             loginDataBaseAdapter.insertEntry(name,phoneNumber);
             mAuthTask = new UserLoginTask(name, phoneNumber);
             mAuthTask.execute((Void) null);
+            loginDataBaseAdapter.close();
         }
     }
 
