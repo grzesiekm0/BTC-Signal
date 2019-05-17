@@ -19,10 +19,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        
+
         listView=(ListView)findViewById(R.id.listView);
         dataModels= new ArrayList<>();
-        Alert a1 = new Alert("bitmex", "USD", 6, 0 );
-        Alert a2 = new Alert("binance", "USD", 3, 1 );
+        Alert a1 = new Alert("BITMEX","USD", "1234", 0 );
+        Alert a2 = new Alert("BINANCE", "USD","2134", 1 );
+        Alert a3 = new Alert("BITMEX", "BTC", "5432", 1 );
+        dataModels.add(a1);
+        dataModels.add(a2);
+        dataModels.add(a3);
 
         adapter= new AlertAdapter(getApplicationContext(),dataModels);
         listView.setAdapter(adapter);
