@@ -57,8 +57,7 @@ public class AlertDatabaseAdapter {
             db = dbHelper.getWritableDatabase();
             long result=db.insert("Alert", null, newValues);
             System.out.print(result);
-            Toast.makeText(context, "Sukces", Toast.LENGTH_LONG).show();
-            System.out.println("dupa z alertem");
+            Toast.makeText(context, "Dodano alert", Toast.LENGTH_LONG).show();
         }catch(Exception ex) {
             System.out.println("Exceptions " +ex);
             Log.e("Note", "One row entered");
@@ -70,7 +69,7 @@ public class AlertDatabaseAdapter {
     {
         String where="AlertId=?";
         int numberOFEntriesDeleted= db.delete("Alert", where, new String[]{UserName}) ;
-        Toast.makeText(context, "Number fo Entry Deleted Successfully : "+numberOFEntriesDeleted, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Usunięto z powodzeniem : "+numberOFEntriesDeleted, Toast.LENGTH_LONG).show();
         return numberOFEntriesDeleted;
     }
     // method to get something  of alert
