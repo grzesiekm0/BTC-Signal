@@ -79,10 +79,15 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Imie</string>
-    <string name="prompt_password">Numer telefonu</string>
+    <string name="prompt_name">Imie</string>
+    <string name="prompt_phone_number">Numer telefonu</string>
     <string name="action_sign_in">Zerejestruj się</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Ok</string>
+    <!-- Strings related to login -->
+    <string name="prompt_course">Kurs</string>
+    <string name="action_add">Dodaj</string>
+    <string name="action_add_short">Ok</string>
+
     <string name="error_invalid_name">Imię jest zbyt krótkie</string>
     <string name="error_invalid_phone_number">Niepoprawny numer</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -90,5 +95,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_login2">Sign in</string>
+    <string name="title_activity_login2">Rejestracja</string>
 </resources>
