@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class AlertDatabaseAdapter {
     static final String DATABASE_NAME = "database.db";
     String ok="OK";
@@ -73,16 +77,36 @@ public class AlertDatabaseAdapter {
         return numberOFEntriesDeleted;
     }
     // method to get something  of alert
-    /*public String getSinlgeEntry(String userName)
+    public String getSinlgeEntry(String userName)
     {
         db=dbHelper.getReadableDatabase();
+        String[] columns = {"AlertId", "Exchange", "Currency", "Course", "EnableAlarm"};
         Cursor cursor=db.query("Alert", null, "AlertId=?", new String[]{userName}, null, null, null);
         if(cursor.getCount()<1) // UserName Not Exist
             return "NOT EXIST";
         cursor.moveToFirst();
         getPassword= cursor.getString(cursor.getColumnIndex("PhoneNumber"));
         return getPassword;
-    }*/
+    }
+
+    public ArrayList<Alert> getSinlgeEntry()
+    {
+        ArrayList<Alert> alerts = new ArrayList<>();
+        db=dbHelper.getReadableDatabase();
+        String[] columns = {"AlertId", "Exchange", "Currency", "Course", "EnableAlarm"};
+        Cursor cursor = db.query("Alert", null, null, null, null, null, null);
+        /*if(cursor.getCount()<1) // UserName Not Exist
+            return "NOT EXIST";*/
+        while(cursor.moveToNext()){
+            Alert alert = new Alert();
+            alert.setExchange(cursor.getString(1));
+            alert.setCurrency(cursor.getString(2));
+            alert.setCourse(cursor.getString(3));
+            alert.setEnableAlarm(cursor.getInt(4));
+            alerts.add(alert);
+        }
+        return alerts;
+    }
     // Method to Update an Existing
     public void  updateEntry(String exchange,String currency, String course, int enableAlarm)
     {
