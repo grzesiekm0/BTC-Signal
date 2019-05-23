@@ -16,6 +16,8 @@ public class Alert implements Serializable {
         this.enableAlarm = enableAlarm;
     }
 
+    public Alert(){}
+
     public String getExchange() {
         return exchange;
     }
