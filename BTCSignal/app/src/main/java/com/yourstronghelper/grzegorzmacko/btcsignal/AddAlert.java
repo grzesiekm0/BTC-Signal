@@ -26,7 +26,11 @@ public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSel
         alertDatabaseAdapter.close();
 
         Spinner spin = (Spinner) findViewById(R.id.exchange);
+        Spinner spin2 = (Spinner) findViewById(R.id.currency);
+
         spin.setOnItemSelectedListener(this);
+        spin2.setOnItemSelectedListener(this);
+
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("Automobile");
@@ -36,14 +40,27 @@ public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSel
         categories.add("Personal");
         categories.add("Travel");
 
+        // Spinner Drop down elements
+        List<String> categories2 = new ArrayList<String>();
+        categories.add("Automobile");
+        categories.add("Business Services");
+        categories.add("Computers");
+        categories.add("Education");
+        categories.add("Personal");
+        categories.add("Travel");
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories2);
+
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
         spin.setAdapter(dataAdapter);
+        spin.setAdapter(dataAdapter2);
     }
 
     @Override
