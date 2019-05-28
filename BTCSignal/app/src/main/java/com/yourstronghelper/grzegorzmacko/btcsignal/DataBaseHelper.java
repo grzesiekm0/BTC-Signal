@@ -31,7 +31,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // previous versions can be handled by comparing _oldVersion and _newVersion
         // values.
         // The simplest case is to drop the old table and create a new one.
-        _db.execSQL("DROP TABLE IF EXISTS " + "LOGIN");
+        _db.execSQL("DROP TABLE IF EXISTS " + "User");
+        _db.execSQL("DROP TABLE IF EXISTS " + "Alert");
 
         // Create a new one.
         onCreate(_db);
