@@ -94,7 +94,7 @@ public class AlertDatabaseAdapter {
         ArrayList<Alert> alerts = new ArrayList<>();
         db=dbHelper.getReadableDatabase();
         String[] columns = {"AlertId", "Exchange", "Currency", "Course", "EnableAlarm"};
-        Cursor cursor = db.query("Alert", null, null, null, null, null, null);
+        Cursor cursor = db.query("Alert", columns, null, null, null, null, null);
         /*if(cursor.getCount()<1) // UserName Not Exist
             return "NOT EXIST";*/
         while(cursor.moveToNext()){
