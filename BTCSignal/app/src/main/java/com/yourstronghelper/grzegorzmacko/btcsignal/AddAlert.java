@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -12,21 +14,19 @@ import java.util.List;
 
 public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AlertDatabaseAdapter alertDatabaseAdapter;
+    Button mAddButton;
+    EditText mCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alert);
+        mAddButton = (Button) findViewById(R.id.add);
+        mCourse = (EditText) findViewById(R.id.course);
         alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
-        alertDatabaseAdapter=alertDatabaseAdapter.open();
-        //example data
-        Alert al = new Alert("bitmex", "PLN", "2000", 1);
-        System.out.println("Test"+al.getExchange());
-        alertDatabaseAdapter.insertEntry(al.getExchange(), al.getCurrency(), al.getCourse(), al.getEnableAlarm());
-        alertDatabaseAdapter.close();
 
-        Spinner spinExchange = (Spinner) findViewById(R.id.exchange);
-        Spinner spinCurrency = (Spinner) findViewById(R.id.currency);
+        final Spinner spinExchange = (Spinner) findViewById(R.id.exchange);
+        final Spinner spinCurrency = (Spinner) findViewById(R.id.currency);
 
         spinExchange.setOnItemSelectedListener(this);
         spinCurrency.setOnItemSelectedListener(this);
@@ -54,6 +54,17 @@ public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSel
         // attaching data adapter to spinner
         spinExchange.setAdapter(dataAdapterExchange);
         spinCurrency.setAdapter(dataAdapterCurrency);
+
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Alert al = new Alert(spinExchange.toString(), spinCurrency.toString(), mCourse.getText().toString(), 1);
+                alertDatabaseAdapter=alertDatabaseAdapter.open();
+                //adding data to database
+                alertDatabaseAdapter.insertEntry(al.getExchange(), al.getCurrency(), al.getCourse(), al.getEnableAlarm());
+                alertDatabaseAdapter.close();
+            }
+        });
     }
 
     @Override
@@ -65,4 +76,6 @@ public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }
