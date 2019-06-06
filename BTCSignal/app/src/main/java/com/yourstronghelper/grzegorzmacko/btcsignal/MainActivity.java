@@ -17,24 +17,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Toolbar was hanidng to view
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
+        //An instance database was initialized and a connection was established
         alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
         alertDatabaseAdapter=alertDatabaseAdapter.open();
-
+        //The list is attached to the view
         listView=(ListView)findViewById(R.id.listView);
+        //Data to the models are initialized
         dataModels= new ArrayList<>();
-
+        //Alerts are retrieved from the database
+        //Connection with datebase is closed.
         dataModels = alertDatabaseAdapter.getSinlgeEntry();
         alertDatabaseAdapter.close();
-
-        /*Alert a1 = new Alert("BITMEX","USD", "1234", 0 );
-        Alert a2 = new Alert("BINANCE", "USD","2134", 1 );
-        Alert a3 = new Alert("BITMEX", "BTC", "5432", 1 );
-        dataModels.add(a1);
-        dataModels.add(a2);
-        dataModels.add(a3);*/
 
         adapter= new AlertAdapter(getApplicationContext(),dataModels);
         listView.setAdapter(adapter);
