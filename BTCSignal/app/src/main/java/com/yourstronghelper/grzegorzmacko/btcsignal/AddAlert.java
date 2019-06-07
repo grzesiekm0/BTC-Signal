@@ -2,6 +2,7 @@ package com.yourstronghelper.grzegorzmacko.btcsignal;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +22,10 @@ public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alert);
+        //Toolbar was hanidng to view
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         mAddButton = (Button) findViewById(R.id.add);
         mCourse = (EditText) findViewById(R.id.course);
         alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
