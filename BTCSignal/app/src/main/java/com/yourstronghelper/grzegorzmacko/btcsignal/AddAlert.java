@@ -58,7 +58,7 @@ public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSel
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Alert al = new Alert(spinExchange.toString(), spinCurrency.toString(), mCourse.getText().toString(), 1);
+                Alert al = new Alert(spinExchange.getSelectedItem().toString(), spinCurrency.getSelectedItem().toString(), mCourse.getText().toString(), 1);
                 alertDatabaseAdapter=alertDatabaseAdapter.open();
                 //adding data to database
                 alertDatabaseAdapter.insertEntry(al.getExchange(), al.getCurrency(), al.getCourse(), al.getEnableAlarm());
