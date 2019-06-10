@@ -1,5 +1,6 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,17 +15,15 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Alert> dataModels;
     AlertAdapter adapter;
     AlertDatabaseAdapter alertDatabaseAdapter;
+    Intent myIntent;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        //Toolbar was hanidng to view
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
-
         // Attaching the layout to the toolbar object
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
 
@@ -59,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_add) {
+            myIntent = new Intent(MainActivity.this, AddAlertActivity.class);
+            MainActivity.this.startActivity(myIntent);
             return true;
         }
 

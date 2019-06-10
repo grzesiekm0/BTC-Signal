@@ -10,7 +10,7 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_search"
+        android:id="@+id/action_add"
         android:orderInCategory="200"
         android:title="Search"
         android:icon="@drawable/ic_launcher_add_alert"
