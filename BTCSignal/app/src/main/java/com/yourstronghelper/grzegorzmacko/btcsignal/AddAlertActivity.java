@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddAlert extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddAlertActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AlertDatabaseAdapter alertDatabaseAdapter;
     Button mAddButton;
     EditText mCourse;
