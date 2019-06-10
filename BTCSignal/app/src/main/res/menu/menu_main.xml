@@ -13,6 +13,6 @@
         android:id="@+id/action_search"
         android:orderInCategory="200"
         android:title="Search"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_add_alert"
         app:showAsAction="ifRoom"/>
 </menu>
