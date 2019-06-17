@@ -7,6 +7,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -17,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     AlertDatabaseAdapter alertDatabaseAdapter;
     Intent myIntent;
     Toolbar toolbar;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +38,13 @@ public class MainActivity extends AppCompatActivity {
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
 
-        //An instance database was initialized and a connection was established
-        alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
-        alertDatabaseAdapter=alertDatabaseAdapter.open();
         //The list is attached to the view
         listView=(ListView)findViewById(R.id.listView);
-        //Data to the models are initialized
-        dataModels= new ArrayList<>();
-        //Alerts are retrieved from the database
-        //Connection with datebase is closed.
-        dataModels = alertDatabaseAdapter.getSinlgeEntry();
-        alertDatabaseAdapter.close();
-
-        adapter= new AlertAdapter(getApplicationContext(),dataModels);
+        adapter= new AlertAdapter(getApplicationContext(),downloadRowsDb());
         listView.setAdapter(adapter);
+        //Text view for api response
+        textView = (TextView) findViewById(R.id.textView);
+        apiRequest();
     }
 
     @Override
@@ -66,4 +70,44 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void apiRequest(){
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://my-json-feed";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        textView.setText("Response: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        textView.setText("Błąd: Chuj, dupa i kamieni kupa. ");
+                    }
+                });
+
+// Add the request to the RequestQueue.
+        queue.add(jsonObjectRequest);
+    }
+
+    public ArrayList downloadRowsDb(){
+        //An instance database was initialized and a connection was established
+        alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
+        alertDatabaseAdapter=alertDatabaseAdapter.open();
+        dataModels= new ArrayList<>();
+        //Alerts are retrieved from the database
+        //Connection with datebase is closed.
+        dataModels = alertDatabaseAdapter.getSinlgeEntry();
+        alertDatabaseAdapter.close();
+        return dataModels;
+    }
+
+
+
 }
