@@ -1,5 +1,6 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -82,5 +83,10 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(AddAlertActivity.this, MainActivity.class);
+        AddAlertActivity.this.startActivity(myIntent);
+        super.onBackPressed();
+    }
 }
