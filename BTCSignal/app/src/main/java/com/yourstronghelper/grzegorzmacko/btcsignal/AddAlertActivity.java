@@ -44,12 +44,14 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
 
         // Spinner Drop down elements
         List<String> categoriesExchange = new ArrayList<String>();
+        categoriesExchange.add("Wybierz giełdę");
         categoriesExchange.add("Bitmex");
         categoriesExchange.add("Bitbay");
         categoriesExchange.add("Binance");
 
         // Spinner Drop down elements
         List<String> categoriesCurrency = new ArrayList<String>();
+        categoriesCurrency.add("Wybierz walutę");
         categoriesCurrency.add("PLN");
         categoriesCurrency.add("USD");
 
