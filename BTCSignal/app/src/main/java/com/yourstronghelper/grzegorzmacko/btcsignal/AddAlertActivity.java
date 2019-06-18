@@ -21,6 +21,8 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
     Button mAddButton;
     EditText mCourse;
     Intent myIntent;
+    Spinner spinExchange;
+    Spinner spinCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,8 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
         mCourse = (EditText) findViewById(R.id.course);
         alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
 
-        final Spinner spinExchange = (Spinner) findViewById(R.id.exchange);
-        final Spinner spinCurrency = (Spinner) findViewById(R.id.currency);
+        spinExchange = (Spinner) findViewById(R.id.exchange);
+        spinCurrency = (Spinner) findViewById(R.id.currency);
 
         spinExchange.setOnItemSelectedListener(this);
         spinCurrency.setOnItemSelectedListener(this);
@@ -92,8 +94,7 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-//            myIntent = new Intent(MainActivity.this, AddAlertActivity.class);
-//            MainActivity.this.startActivity(myIntent);
+            resetFields();
             return true;
         }
 
@@ -115,5 +116,11 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
         Intent myIntent = new Intent(AddAlertActivity.this, MainActivity.class);
         AddAlertActivity.this.startActivity(myIntent);
         super.onBackPressed();
+    }
+
+    public void resetFields(){
+        spinExchange.setSelection(0);
+        spinCurrency.setSelection(0);
+        mCourse.setText("");
     }
 }
