@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -75,6 +76,18 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
                 mCurrency.setText("xxx!");
                 //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
                 notifyDataSetChanged();
+            }
+        });
+
+        mEnableAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true){
+                    System.out.println("Tak!");
+                }
+                else if(isChecked == false){
+                    System.out.println("Nie!");
+                }
             }
         });
 
