@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
 
     TextView mExchange;
     TextView mCourse;
-    TextView mEnableAlarm;
+    Switch mEnableAlarm;
     TextView mCurrency;
 
     public AlertAdapter(Context context, List<Alert> myOrders) {
@@ -40,12 +41,19 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         mExchange = (TextView)listItemView.findViewById(R.id.exchange);
         mCourse = (TextView)listItemView.findViewById(R.id.course);
         mCurrency = (TextView)listItemView.findViewById(R.id.currency);
+        mEnableAlarm = (Switch)listItemView.findViewById(R.id.enableAlarm);
+
 
         //Set the text of the meal, amount and quantity
         mExchange.setText(currentAlarm.getExchange());
         mCourse.setText(currentAlarm.getCourse());
         mCurrency.setText("x "+ currentAlarm.getCurrency());
-
+        if(currentAlarm.getEnableAlarm()==1){
+            mEnableAlarm.setChecked(true);
+        }
+        else if(currentAlarm.getEnableAlarm()==0){
+            mEnableAlarm.setChecked(false);
+        }
 
         //OnClick listeners for all the buttons on the ListView Item
         mExchange.setOnClickListener(new View.OnClickListener() {
