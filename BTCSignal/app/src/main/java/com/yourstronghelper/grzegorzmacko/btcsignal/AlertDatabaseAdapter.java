@@ -121,4 +121,15 @@ public class AlertDatabaseAdapter {
         db.update("Alert",updatedValues, where, new String[]{exchange});
     }
 
+    // Method to Update an Existing
+    public void  updateEntrySwitch(String alertId, int enableAlarm)
+    {
+        //  create object of ContentValues
+        ContentValues updatedValues = new ContentValues();
+        // Assign values for each Column.
+        updatedValues.put("EnableAlarm", enableAlarm);
+        String where="AlertId = ?";
+        db.update("Alert",updatedValues, where, new String[]{alertId});
+    }
+
 }
