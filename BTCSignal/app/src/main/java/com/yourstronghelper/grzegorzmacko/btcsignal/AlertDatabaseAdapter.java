@@ -99,10 +99,11 @@ public class AlertDatabaseAdapter {
             return "NOT EXIST";*/
         while(cursor.moveToNext()){
             Alert alert = new Alert();
-            alert.setExchange(cursor.getString(1));
-            alert.setCurrency(cursor.getString(2));
-            alert.setCourse(cursor.getString(3));
-            alert.setEnableAlarm(cursor.getInt(4));
+            alert.setAlertId(cursor.getString(1));
+            alert.setExchange(cursor.getString(2));
+            alert.setCurrency(cursor.getString(3));
+            alert.setCourse(cursor.getString(4));
+            alert.setEnableAlarm(cursor.getInt(5));
             alerts.add(alert);
         }
         return alerts;
