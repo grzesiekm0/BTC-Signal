@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import static com.yourstronghelper.grzegorzmacko.btcsignal.MainActivity.updateRowsDb;
+
 public class AlertAdapter extends ArrayAdapter<Alert> {
     private List<Alert> mList;
     private Context mContext;
@@ -36,7 +38,6 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         }
 
         final Alert currentAlarm = getItem(position);
-
 
 
         mExchange = (TextView)listItemView.findViewById(R.id.exchange);
@@ -83,7 +84,9 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked == true){
+                    //I must modify class beacues I dont have important alertId in row of listview.
                     System.out.println("Tak!");
+                    updateRowsDb();
                 }
                 else if(isChecked == false){
                     System.out.println("Nie!");

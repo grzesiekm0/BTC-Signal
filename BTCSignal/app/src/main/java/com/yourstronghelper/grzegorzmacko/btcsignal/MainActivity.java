@@ -1,5 +1,6 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,12 +23,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
-    ArrayList<Alert> dataModels;
+    static ArrayList<Alert> dataModels;
     AlertAdapter adapter;
-    AlertDatabaseAdapter alertDatabaseAdapter;
+   static AlertDatabaseAdapter alertDatabaseAdapter;
     Intent myIntent;
     Toolbar toolbar;
     TextView textView;
+
+    static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +109,22 @@ public class MainActivity extends AppCompatActivity {
         dataModels = alertDatabaseAdapter.getSinlgeEntry();
         alertDatabaseAdapter.close();
         return dataModels;
+    }
+
+    public static void updateRowsDb(){
+
+        //An instance database was initialized and a connection was established
+        alertDatabaseAdapter =new AlertDatabaseAdapter(getAppContext());
+        alertDatabaseAdapter=alertDatabaseAdapter.open();
+        dataModels= new ArrayList<>();
+        //Alerts are retrieved from the database
+        //Connection with datebase is closed.
+        dataModels = alertDatabaseAdapter.getSinlgeEntry();
+        alertDatabaseAdapter.close();
+    }
+
+    public static Context getAppContext() {
+        return MainActivity.context;
     }
 
 
