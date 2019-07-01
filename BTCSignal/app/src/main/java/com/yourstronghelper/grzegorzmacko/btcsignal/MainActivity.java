@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
+        context = getApplicationContext();
 
         //The list is attached to the view
         listView=(ListView)findViewById(R.id.listView);
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList downloadRowsDb(){
         //An instance database was initialized and a connection was established
         alertDatabaseAdapter=new AlertDatabaseAdapter(getApplicationContext());
-        alertDatabaseAdapter=alertDatabaseAdapter.open();
+        alertDatabaseAdapter.open();
         dataModels= new ArrayList<>();
         //Alerts are retrieved from the database
         //Connection with datebase is closed.
@@ -111,15 +112,14 @@ public class MainActivity extends AppCompatActivity {
         return dataModels;
     }
 
-    public static void updateRowsDb(){
+    public static void updateRowsDb(String alertId, int enableAlarm){
 
         //An instance database was initialized and a connection was established
         alertDatabaseAdapter =new AlertDatabaseAdapter(getAppContext());
-        alertDatabaseAdapter=alertDatabaseAdapter.open();
-        dataModels= new ArrayList<>();
+        alertDatabaseAdapter.open();
         //Alerts are retrieved from the database
         //Connection with datebase is closed.
-        dataModels = alertDatabaseAdapter.getSinlgeEntry();
+        alertDatabaseAdapter.updateEntrySwitch(alertId, enableAlarm);
         alertDatabaseAdapter.close();
     }
 
