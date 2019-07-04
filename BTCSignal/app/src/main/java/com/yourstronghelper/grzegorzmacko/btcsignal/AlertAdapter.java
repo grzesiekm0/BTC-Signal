@@ -85,11 +85,9 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked == true){
-                    //I must modify class beacues I dont have important alertId in row of listview.
                     updateRowsDb(currentAlarm.getAlertId(), 1);
                     currentAlarm.getAlertId();
                     System.out.println("Tak!");
-                  //  updateRowsDb();
                 }
                 else if(isChecked == false){
                     updateRowsDb(currentAlarm.getAlertId(), 0);

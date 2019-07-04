@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // TODO: Handle error
-                        textView.setText("Błąd: Chuj, dupa i kamieni kupa. ");
+                        textView.setText("Error API");
                     }
                 });
 
