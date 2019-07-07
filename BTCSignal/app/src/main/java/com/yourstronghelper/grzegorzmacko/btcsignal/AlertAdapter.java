@@ -51,9 +51,6 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         mExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //mEnableAlarm.setText("00");
-                //quantityText.setText("x "+ currentFood.getmQuantity());
-                //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
                 currentAlarm.setExchange("Bitmex");
                 notifyDataSetChanged();
             }
@@ -62,10 +59,9 @@ public class AlertAdapter extends ArrayAdapter<Alert> {
         mCurrency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //currentFood.removeFromQuantity();
+
 
                 mCurrency.setText("xxx!");
-                //currentCost.setText("GH"+"\u20B5"+" "+ (currentFood.getmAmount() * currentFood.getmQuantity()));
                 notifyDataSetChanged();
             }
         });
