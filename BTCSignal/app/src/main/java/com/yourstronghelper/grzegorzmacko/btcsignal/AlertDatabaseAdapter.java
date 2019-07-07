@@ -99,6 +99,7 @@ public class AlertDatabaseAdapter {
             return "NOT EXIST";*/
         while(cursor.moveToNext()){
             Alert alert = new Alert();
+            alert.setAlertId(cursor.getString(0));
             alert.setExchange(cursor.getString(1));
             alert.setCurrency(cursor.getString(2));
             alert.setCourse(cursor.getString(3));
@@ -119,6 +120,17 @@ public class AlertDatabaseAdapter {
         updatedValues.put("EnableAlarm", enableAlarm);
         String where="AlertId = ?";
         db.update("Alert",updatedValues, where, new String[]{exchange});
+    }
+
+    // Method to Update an Existing
+    public void  updateEntrySwitch(String alertId, int enableAlarm)
+    {
+        //  create object of ContentValues
+        ContentValues updatedValues = new ContentValues();
+        // Assign values for each Column.
+        updatedValues.put("EnableAlarm", enableAlarm);
+        String where="AlertId = ?";
+        db.update("Alert",updatedValues, where, new String[]{alertId});
     }
 
 }

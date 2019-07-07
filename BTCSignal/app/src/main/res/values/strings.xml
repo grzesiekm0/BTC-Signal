@@ -96,4 +96,5 @@
         completions."
     </string>
     <string name="title_activity_login2">Rejestracja</string>
+    <string name="action_settings">Test</string>
 </resources>
