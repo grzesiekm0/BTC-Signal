@@ -80,6 +80,21 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
         });
     }
 
+    public boolean validate(){
+        if(mCourse.getText().toString().equals("")){
+            return false;
+        }
+         else if (spinCurrency.getSelectedItem().toString().equals(""))
+        {
+            return false;
+        }
+        else if (spinExchange.getSelectedItem().toString().equals(""))
+        {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
