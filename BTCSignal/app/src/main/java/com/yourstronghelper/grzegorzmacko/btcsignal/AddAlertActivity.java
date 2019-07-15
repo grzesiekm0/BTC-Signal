@@ -71,11 +71,18 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Alert al = new Alert(null, spinExchange.getSelectedItem().toString(), spinCurrency.getSelectedItem().toString(), mCourse.getText().toString(), 1);
-                alertDatabaseAdapter=alertDatabaseAdapter.open();
-                //adding data to database
-                alertDatabaseAdapter.insertEntry(al.getExchange(), al.getCurrency(), al.getCourse(), al.getEnableAlarm());
-                alertDatabaseAdapter.close();
+                try {
+                    if (validate() == true) {
+                        Alert al = new Alert(null, spinExchange.getSelectedItem().toString(), spinCurrency.getSelectedItem().toString(), mCourse.getText().toString(), 1);
+                        alertDatabaseAdapter = alertDatabaseAdapter.open();
+                        //adding data to database
+                        alertDatabaseAdapter.insertEntry(al.getExchange(), al.getCurrency(), al.getCourse(), al.getEnableAlarm());
+                        alertDatabaseAdapter.close();
+                    }
+                }
+                catch (Exception e){
+
+                }
             }
         });
     }
