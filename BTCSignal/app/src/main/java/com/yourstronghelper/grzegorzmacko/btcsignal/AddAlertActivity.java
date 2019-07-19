@@ -1,6 +1,7 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,18 +91,42 @@ public class AddAlertActivity extends AppCompatActivity implements AdapterView.O
 
     public boolean validate(){
         if(mCourse.getText().toString().equals("")){
+            //setEditTextError(mCourse, "Pole nie może być puste");
+            mCourse.setError("Blad");
+            mCourse.requestFocus();
             return false;
         }
-         else if (spinCurrency.getSelectedItem().toString().equals(""))
+         else if (spinCurrency.getSelectedItem().toString().equals("Wybierz walutę"))
         {
+            setSpinnerError(spinCurrency,"field can't be empty");
             return false;
         }
-        else if (spinExchange.getSelectedItem().toString().equals(""))
+        else if (spinExchange.getSelectedItem().toString().equals("Wybierz giełdę"))
         {
+            setSpinnerError(spinExchange,"field can't be empty");
             return false;
         }
         return true;
     }
+
+    private void setSpinnerError(Spinner spinner, String error){
+        View selectedView = spinner.getSelectedView();
+        if (selectedView != null && selectedView instanceof TextView) {
+            spinner.requestFocus();
+            TextView selectedTextView = (TextView) selectedView;
+            selectedTextView.setError("error"); // any name of the error will do
+            selectedTextView.setTextColor(Color.RED); //text color in which you want your error message to be displayed
+            selectedTextView.setText(error); // actual error message
+            //spinner.performClick(); // to open the spinner list if error is found.
+
+        }
+    }
+    /*private void setEditTextError(EditText editText, String error){
+        View selectedView = (View) editText.getText();
+        if (selectedView == null && selectedView instanceof EditText) {
+        editText.setError(error);
+        }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
