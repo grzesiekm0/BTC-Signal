@@ -2,6 +2,7 @@ package com.yourstronghelper.grzegorzmacko.btcsignal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -138,7 +139,21 @@ public class MainActivity extends AppCompatActivity {
 
         //InputStream caInput = new BufferedInputStream(MainActivity.class.getResourceAsStream("./cert/Certyfikaty.crt"));
 
-        InputStream caInput = new BufferedInputStream(getAssets().open("Certyfikaty.crt"));
+         InputStream caInput = new BufferedInputStream(getAssets().open("Certyfikaty.cer"));
+
+
+        /*AssetManager assManager = getApplicationContext().getAssets();
+        InputStream is = null;
+        try {
+            is = assManager.open("Certyfikaty.cer");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        InputStream caInput = new BufferedInputStream(is);*/
+
+
+
 
         Certificate ca;
         try {
