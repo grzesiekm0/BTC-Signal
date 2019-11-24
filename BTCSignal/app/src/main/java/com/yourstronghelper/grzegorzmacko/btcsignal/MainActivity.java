@@ -17,9 +17,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HurlStack;
+
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -28,6 +32,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -39,9 +44,14 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
@@ -50,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
    static AlertDatabaseAdapter alertDatabaseAdapter;
     Intent myIntent;
     Toolbar toolbar;
-    TextView textView;
+    TextView textView, mTextView;
 
     static Context context;
 
@@ -69,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         adapter= new AlertAdapter(getApplicationContext(),downloadRowsDb());
         listView.setAdapter(adapter);
         //Text view for api response
-        textView = (TextView) findViewById(R.id.textView);
-        try {
+       // textView = (TextView) findViewById(R.id.textView);
+        /*try {
             apiRequest();
         } catch (CertificateException e) {
             e.printStackTrace();
@@ -82,7 +92,43 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (KeyManagementException e) {
             e.printStackTrace();
-        }
+        }*/
+        mTextView = (TextView) findViewById(R.id.textView);
+        String url = "https://10.0.2.2:5001/api/alert";
+
+        HurlStack hurlStack = new HurlStack() {
+            @Override
+            protected HttpURLConnection createConnection(URL url) throws IOException {
+                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) super.createConnection(url);
+                try {
+                    httpsURLConnection.setSSLSocketFactory(getSSLSocketFactory());
+                    httpsURLConnection.setHostnameVerifier(getHostnameVerifier());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return httpsURLConnection;
+            }
+        };
+
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    mTextView.setText(response.toString(5));
+                } catch (JSONException e) {
+                    mTextView.setText(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText(error.toString());
+            }
+        });
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(this, hurlStack);
+
+        requestQueue.add(jsonObjectRequest);
     }
 
     @Override
@@ -129,32 +175,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void apiRequest() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        // Load CAs from an InputStream
-// (could be from a resource or ByteArrayInputStream or ...)
+
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
-// From https://www.washington.edu/itconnect/security/ca/load-der.crt
-        //InputStream caInput = new BufferedInputStream(getAssets().open("/cert/Certyfikaty.crt"));
-       // InputStream caInput = this.getClassLoader().getResourceAsStream("/Certyfikaty.crt");
-        //InputStream caInput = class.getResourceAsStream("/cert/Certyfikaty.crt");
-
-        //InputStream caInput = new BufferedInputStream(MainActivity.class.getResourceAsStream("./cert/Certyfikaty.crt"));
-
          InputStream caInput = new BufferedInputStream(getAssets().open("Certyfikaty.cer"));
-
-
-        /*AssetManager assManager = getApplicationContext().getAssets();
-        InputStream is = null;
-        try {
-            is = assManager.open("Certyfikaty.cer");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        InputStream caInput = new BufferedInputStream(is);*/
-
-
-
-
         Certificate ca;
         try {
             ca = cf.generateCertificate(caInput);
@@ -179,14 +202,7 @@ public class MainActivity extends AppCompatActivity {
         context.init(null, tmf.getTrustManagers(), null);
 
 // Tell the URLConnection to use a SocketFactory from our SSLContext
-   /*     URL url = new URL("https://certs.cac.washington.edu/CAtest/");
-        HttpsURLConnection urlConnection =
-                (HttpsURLConnection)url.openConnection();
-        urlConnection.setSSLSocketFactory(context.getSocketFactory());
-        InputStream in = urlConnection.getInputStream();
-        copyInputStreamToOutputStream(in, System.out);*/
         HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
-
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -216,6 +232,81 @@ public class MainActivity extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjectRequest);
+    }
+
+    // Let's assume your server app is hosting inside a server machine
+    // which has a server certificate in which "Issued to" is "localhost",for example.
+    // Then, inside verify method you can verify "localhost".
+    // If not, you can temporarily return true
+    private HostnameVerifier getHostnameVerifier() {
+        return new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                //return true; // verify always returns true, which could cause insecure network traffic due to trusting TLS/SSL server certificates for wrong hostnames
+                HostnameVerifier hv = HttpsURLConnection.getDefaultHostnameVerifier();
+                return hv.verify("localhost", session);
+            }
+        };
+    }
+
+    private TrustManager[] getWrappedTrustManagers(TrustManager[] trustManagers) {
+        final X509TrustManager originalTrustManager = (X509TrustManager) trustManagers[0];
+        return new TrustManager[]{
+                new X509TrustManager() {
+                    public X509Certificate[] getAcceptedIssuers() {
+                        return originalTrustManager.getAcceptedIssuers();
+                    }
+
+                    public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                        try {
+                            if (certs != null && certs.length > 0){
+                                certs[0].checkValidity();
+                            } else {
+                                originalTrustManager.checkClientTrusted(certs, authType);
+                            }
+                        } catch (CertificateException e) {
+                            Log.w("checkClientTrusted", e.toString());
+                        }
+                    }
+
+                    public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                        try {
+                            if (certs != null && certs.length > 0){
+                                certs[0].checkValidity();
+                            } else {
+                                originalTrustManager.checkServerTrusted(certs, authType);
+                            }
+                        } catch (CertificateException e) {
+                            Log.w("checkServerTrusted", e.toString());
+                        }
+                    }
+                }
+        };
+    }
+
+    private SSLSocketFactory getSSLSocketFactory()
+            throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, KeyManagementException {
+        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+        InputStream caInput = new BufferedInputStream(getAssets().open("Certyfikaty.cer"));
+
+
+        Certificate ca = cf.generateCertificate(caInput);
+        caInput.close();
+
+        KeyStore keyStore = KeyStore.getInstance("BKS");
+        keyStore.load(null, null);
+        keyStore.setCertificateEntry("ca", ca);
+
+        String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
+        tmf.init(keyStore);
+
+        TrustManager[] wrappedTrustManagers = getWrappedTrustManagers(tmf.getTrustManagers());
+
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, wrappedTrustManagers, null);
+
+        return sslContext.getSocketFactory();
     }
 
     public ArrayList downloadRowsDb(){
