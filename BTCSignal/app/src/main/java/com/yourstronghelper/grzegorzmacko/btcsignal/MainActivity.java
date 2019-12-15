@@ -113,7 +113,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject users = response.getJSONObject(i);
+
+                        String id = ("id: "+users.getString("id"));
+                        String name = ("Name: "+users.getString("name"));
+                        String username = ("Username: "+users.getString("username"));
+                        String email = ("Email: "+users.getString("email"));
+                        String address = parseAddress(users);
+                        String destination = parseCoordinates(users);
+                        String company = parseCompany(users);
+                        String phone = ("Phone: "+users.getString("phone"));
+                        String website = ("Website: "+users.getString("website"));
+                        String eta = get_time_to_travel(origin, destination, API, mode);
+
+                        UserData udata = new UserData(id, name, username, email, address, phone, website, company,eta);
+                        userData.add(udata);
+                    }
+
                     mTextView.setText(response.toString(5));
+
                 } catch (JSONException e) {
                     mTextView.setText(e.toString());
                 }
