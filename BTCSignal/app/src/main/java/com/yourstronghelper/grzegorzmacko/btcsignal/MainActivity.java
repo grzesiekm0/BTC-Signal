@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         //Text view for api response
        // textView = (TextView) findViewById(R.id.textView);
-        /*try {
+        try {
             apiRequest();
         } catch (CertificateException e) {
             e.printStackTrace();
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (KeyManagementException e) {
             e.printStackTrace();
-        }*/
+        }
         mTextView = (TextView) findViewById(R.id.textView);
         String url = "https://10.0.2.2:5001/api/user";
 
@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 return httpsURLConnection;
             }
         };
+
+        
 
         final JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
             @Override
@@ -185,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         return nread;
     }
 
-    public void apiRequest() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+    /*public void apiRequest() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
 
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
          InputStream caInput = new BufferedInputStream(getAssets().open("Certyfikaty.cer"));
@@ -243,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjectRequest);
-    }
+    }*/
 
     // Let's assume your server app is hosting inside a server machine
     // which has a server certificate in which "Issued to" is "localhost",for example.
