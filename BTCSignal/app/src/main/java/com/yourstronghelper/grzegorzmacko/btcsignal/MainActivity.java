@@ -81,20 +81,18 @@ public class MainActivity extends AppCompatActivity {
        // textView = (TextView) findViewById(R.id.textView);
         try {
             apiRequest();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mTextView = (TextView) findViewById(R.id.textView);
-        String url = "https://10.0.2.2:5001/api/user";
 
+    }
+
+    //Sending request to the API server.
+    private void apiRequest(){
+        //HurlStack an interface for transforming URLs before use.
+        //The certificate from the API is added and processed here.
+        String url = "https://10.0.2.2:5001/api/user";
         HurlStack hurlStack = new HurlStack() {
             @Override
             protected HttpURLConnection createConnection(URL url) throws IOException {
@@ -109,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        
-
         final JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println(numerPhone);
 
                         //UserData udata = new UserData(id, name, username, email, address, phone, website, company,eta);
-                       // userData.add(udata);
+                        // userData.add(udata);
                     }
 
                     mTextView.setText(response.toString(5));
@@ -140,8 +136,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this, hurlStack);
-
         requestQueue.add(jsonObjectRequest);
+    }
+
+    protected HurlStack transUrl(){
+        //HurlStack an interface for transforming URLs before use.
+        //The certificate from the API is added and processed here.
+        String url = "https://10.0.2.2:5001/api/user";
+        HurlStack hurlStack = new HurlStack() {
+            @Override
+            protected HttpURLConnection createConnection(URL url) throws IOException {
+                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) super.createConnection(url);
+                try {
+                    httpsURLConnection.setSSLSocketFactory(getSSLSocketFactory());
+                    httpsURLConnection.setHostnameVerifier(getHostnameVerifier());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return httpsURLConnection;
+            }
+        };
+        return hurlStack;
     }
 
     @Override
@@ -167,85 +182,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    // buffer size used for reading and writing
-    private static final int BUFFER_SIZE = 8192;
-
-    /**
-     * Reads all bytes from an input stream and writes them to an output stream.
-     */
-    private static long copy(InputStream source, OutputStream sink)
-            throws IOException
-    {
-        long nread = 0L;
-        byte[] buf = new byte[BUFFER_SIZE];
-        int n;
-        while ((n = source.read(buf)) > 0) {
-            sink.write(buf, 0, n);
-            nread += n;
-        }
-        return nread;
-    }
-
-    /*public void apiRequest() throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-
-        CertificateFactory cf = CertificateFactory.getInstance("X.509");
-         InputStream caInput = new BufferedInputStream(getAssets().open("Certyfikaty.cer"));
-        Certificate ca;
-        try {
-            ca = cf.generateCertificate(caInput);
-            System.out.println("ca=" + ((X509Certificate) ca).getSubjectDN());
-        } finally {
-            caInput.close();
-        }
-
-// Create a KeyStore containing our trusted CAs
-        String keyStoreType = KeyStore.getDefaultType();
-        KeyStore keyStore = KeyStore.getInstance(keyStoreType);
-        keyStore.load(null, null);
-        keyStore.setCertificateEntry("ca", ca);
-
-// Create a TrustManager that trusts the CAs in our KeyStore
-        String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
-        tmf.init(keyStore);
-
-// Create an SSLContext that uses our TrustManager
-        SSLContext context = SSLContext.getInstance("TLS");
-        context.init(null, tmf.getTrustManagers(), null);
-
-// Tell the URLConnection to use a SocketFactory from our SSLContext
-        HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
-
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url2 = "https://10.0.2.2:5001/api/alert";
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        textView.setText("Response: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                       // textView.setText("Error API");
-                        Log.e("Volly Error", error.toString());
-
-                        NetworkResponse networkResponse = error.networkResponse;
-                        if (networkResponse != null) {
-                            Log.e("Status code", String.valueOf(networkResponse.statusCode));
-                        }
-                    }
-                });
-
-// Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest);
-    }*/
 
     // Let's assume your server app is hosting inside a server machine
     // which has a server certificate in which "Issued to" is "localhost",for example.
