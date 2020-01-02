@@ -90,22 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Sending request to the API server.
     private void apiRequest(){
-        //HurlStack an interface for transforming URLs before use.
-        //The certificate from the API is added and processed here.
-        String url = "https://10.0.2.2:5001/api/user";
-        HurlStack hurlStack = new HurlStack() {
-            @Override
-            protected HttpURLConnection createConnection(URL url) throws IOException {
-                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) super.createConnection(url);
-                try {
-                    httpsURLConnection.setSSLSocketFactory(getSSLSocketFactory());
-                    httpsURLConnection.setHostnameVerifier(getHostnameVerifier());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return httpsURLConnection;
-            }
-        };
+
+       String url = "https://10.0.2.2:5001/api/user";
+       HurlStack urlAfter = transUrl(url);
 
         final JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
             @Override
@@ -135,14 +122,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final RequestQueue requestQueue = Volley.newRequestQueue(this, hurlStack);
+        final RequestQueue requestQueue = Volley.newRequestQueue(this,  urlAfter);
         requestQueue.add(jsonObjectRequest);
     }
 
-    protected HurlStack transUrl(){
+    protected HurlStack transUrl(String url){
         //HurlStack an interface for transforming URLs before use.
         //The certificate from the API is added and processed here.
-        String url = "https://10.0.2.2:5001/api/user";
         HurlStack hurlStack = new HurlStack() {
             @Override
             protected HttpURLConnection createConnection(URL url) throws IOException {
