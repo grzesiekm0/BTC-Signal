@@ -1,5 +1,9 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+
 /**
  * Define a Service that returns an <code><a href="/reference/android/os/IBinder.html">IBinder</a></code> for the
  * sync adapter class, allowing the sync adapter framework to call
