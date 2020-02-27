@@ -30,7 +30,7 @@ public class AlertDatabaseAdapter {
     public  AlertDatabaseAdapter(Context _context)
     {
         context = _context;
-        dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        //dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     // Method to openthe Database
     public  AlertDatabaseAdapter open() throws SQLException

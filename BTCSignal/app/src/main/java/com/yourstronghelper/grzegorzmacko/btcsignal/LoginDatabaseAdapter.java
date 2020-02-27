@@ -30,7 +30,7 @@ public class LoginDatabaseAdapter {
     public  LoginDatabaseAdapter(Context _context)
     {
         context = _context;
-        dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        //dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     // Method to openthe Database
     public  LoginDatabaseAdapter open() throws SQLException
