@@ -6,21 +6,42 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 public class DataBaseHelper extends SQLiteOpenHelper {
-    private final Context context;
+    //private final Context context;
+    private static volatile DataBaseHelper instance;
+    private final SQLiteDatabase db;
 
-    public DataBaseHelper(Context context, String name, CursorFactory factory, int version) {
+    /*public DataBaseHelper(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
+    }*/
+    private DataBaseHelper(Context c) {
+        super(c, "database.db", null, 1);
+        this.db = getWritableDatabase();
+    }
+    /**
+     * We use a Singleton to prevent leaking the SQLiteDatabase or Context.
+     * @return {@link DataBaseHelper}
+     */
+    public static DataBaseHelper getInstance(Context c) {
+        if (instance == null) {
+            synchronized (DataBaseHelper.class) {
+                if (instance == null) {
+                    instance = new DataBaseHelper(c);
+                }
+            }
+        }
+        return instance;
     }
     // Called when no database exists in disk and the helper class needs
     // to create a new one.
     @Override
-    public void onCreate(SQLiteDatabase _db) {
+    public void onCreate(SQLiteDatabase db) {
         try {
-            _db.execSQL(LoginDatabaseAdapter.DATABASE_CREATE);
-            _db.execSQL(AlertDatabaseAdapter.DATABASE_CREATE);
+            /*_db.execSQL(LoginDatabaseAdapter.DATABASE_CREATE);
+            _db.execSQL(AlertDatabaseAdapter.DATABASE_CREATE);*/
+            createAlertsTable(db);
         }catch(Exception er){
-            Log.e("Error","exceptioin");
+            Log.e("Error","exception ");
         }
     }
     // Called when there is a database version mismatch meaning that the version
@@ -28,7 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion)
     {
-        // Log the version upgrade.
+       /* // Log the version upgrade.
         Log.w("TaskDBAdapter", "Upgrading from version " +_oldVersion + " to " +_newVersion + ", which will destroy all old data");
         // Upgrade the existing database to conform to the new version. Multiple
         // previous versions can be handled by comparing _oldVersion and _newVersion
@@ -38,6 +59,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         _db.execSQL("DROP TABLE IF EXISTS " + "Alert");
 
         // Create a new one.
-        onCreate(_db);
+        onCreate(_db);*/
+        // Update any SQLite tables here
+        db.execSQL("DROP TABLE IF EXISTS [Alert];");
+        onCreate(db);
+    }
+
+
+    /**
+     * Provide access to our database.
+     */
+    public SQLiteDatabase getDb() {
+        return db;
+    }
+
+    /**
+     * Creates our 'articles' SQLite database table.
+     * @param db {@link SQLiteDatabase}
+     */
+    private void createAlertsTable(SQLiteDatabase db) {
+        db.execSQL("create table Alert( AlertId integer primary key autoincrement,Exchange  text,Currency  text, Course text, EnableAlarm integer); ");
     }
 }
