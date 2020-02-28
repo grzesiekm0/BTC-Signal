@@ -28,7 +28,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <provider
             android:name="com.yourstronghelper.grzegorzmacko.btcsignal.StubProvider"
-            android:authorities="com.example.android.datasync.provider"
+            android:authorities="com.example.sync"
             android:exported="false"
             android:syncable="true"/>
         <service
