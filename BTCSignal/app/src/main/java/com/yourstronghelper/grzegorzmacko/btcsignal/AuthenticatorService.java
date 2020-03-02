@@ -3,26 +3,25 @@ package com.yourstronghelper.grzegorzmacko.btcsignal;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.annotation.Nullable;
 
 /**
- * A bound Service that instantiates the authenticator
- * when started.
+ * This is used only by Android to run our {@link AccountAuthenticator}.
  */
 public class AuthenticatorService extends Service {
-    //...
-    // Instance field that stores the authenticator object
-    private Authenticator mAuthenticator;
+    private AccountAuthenticator authenticator;
+
+
     @Override
     public void onCreate() {
-        // Create a new authenticator object
-        mAuthenticator = new Authenticator(this);
+        // Instantiate our authenticator when the service is created
+        this.authenticator = new AccountAuthenticator(this);
     }
-    /*
-     * When the system binds to this Service to make the RPC call
-     * return the authenticator's IBinder.
-     */
+
+    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return mAuthenticator.getIBinder();
+        // Return the authenticator's IBinder
+        return authenticator.getIBinder();
     }
 }
