@@ -3,6 +3,7 @@ package com.yourstronghelper.grzegorzmacko.btcsignal;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.annotation.Nullable;
 
 /**
  * Define a Service that returns an <code><a href="/reference/android/os/IBinder.html">IBinder</a></code> for the
@@ -25,9 +26,10 @@ public class SyncService extends Service {
          * Disallow parallel syncs
          */
         synchronized (sSyncAdapterLock) {
-            if (sSyncAdapter == null) {
+           /* if (sSyncAdapter == null) {
                 sSyncAdapter = new SyncAdapter(getApplicationContext(), true);
-            }
+            }*/
+            sSyncAdapter = new SyncAdapter(this, false);
         }
     }
     /**
@@ -35,6 +37,7 @@ public class SyncService extends Service {
      * the sync adapter.
      *
      */
+    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         /*
