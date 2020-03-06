@@ -113,7 +113,7 @@ import java.util.Map;
 
             // Compare the hash table of network entries to all the local entries
             Log.i(TAG, "Fetching local entries...");
-            Cursor c = resolver.query(AlertContract.Articles.CONTENT_URI, null, null, null, null, null);
+            Cursor c = resolver.query(AlertContract.Alert.CONTENT_URI, null, null, null, null, null);
             assert c != null;
             c.moveToFirst();
 
@@ -121,15 +121,18 @@ import java.util.Map;
             String title;
             String content;
             String link;
+            String dupa;
             Alert found;
             for (int i = 0; i < c.getCount(); i++) {
                 syncResult.stats.numEntries++;
 
                 // Create local article entry
-                id = c.getString(c.getColumnIndex(AlertContract.Articles.COL_ID));
-                title = c.getString(c.getColumnIndex(AlertContract.Alert.COL_TITLE));
-                content = c.getString(c.getColumnIndex(AlertContract.Alert.COL_CONTENT));
-                link = c.getString(c.getColumnIndex(AlertContract.Alert.COL_LINK));
+                id = c.getString(c.getColumnIndex(AlertContract.Alert.COL_ID));
+                title = c.getString(c.getColumnIndex(AlertContract.Alert.COL_EXCHANGE));
+                content = c.getString(c.getColumnIndex(AlertContract.Alert.COL_COURSE));
+                link = c.getString(c.getColumnIndex(AlertContract.Alert.COL_CURRENCY));
+                dupa = c.getString(c.getColumnIndex(AlertContract.Alert.COL_ENABLE_ALARM));
+
 
                 // Try to retrieve the local entry from network entries
                 found = networkEntries.get(id);
@@ -138,16 +141,17 @@ import java.util.Map;
                     networkEntries.remove(id);
 
                     // Check to see if it needs to be updated
-                    if (!title.equals(found.getTitle())
-                            || !content.equals(found.getContent())
-                            || !link.equals(found.getLink())) {
+                    if (!title.equals(found.getExchange())
+                            || !content.equals(found.getCourse())
+                            || !link.equals(found.getCurrency())) {
                         // Batch an update for the existing record
                         Log.i(TAG, "Scheduling update: " + title);
                         batch.add(ContentProviderOperation.newUpdate(AlertContract.Alert.CONTENT_URI)
                                 .withSelection(AlertContract.Alert.COL_ID + "='" + id + "'", null)
-                                .withValue(AlertContract.Alert.COL_TITLE, found.getTitle())
-                                .withValue(AlertContract.Alert.COL_CONTENT, found.getContent())
-                                .withValue(AlertContract.Alert.COL_LINK, found.getLink())
+                                .withValue(AlertContract.Alert.COL_EXCHANGE, found.getExchange())
+                                .withValue(AlertContract.Alert.COL_COURSE, found.getCourse())
+                                .withValue(AlertContract.Alert.COL_CURRENCY, found.getCurrency())
+                                .withValue(AlertContract.Alert.COL_ENABLE_ALARM, found.getEnableAlarm())
                                 .build());
                         syncResult.stats.numUpdates++;
                     }
@@ -164,13 +168,14 @@ import java.util.Map;
             c.close();
 
             // Add all the new entries
-            for (Article article : networkEntries.values()) {
-                Log.i(TAG, "Scheduling insert: " + article.getTitle());
+            for (Alert article : networkEntries.values()) {
+                Log.i(TAG, "Scheduling insert: " + article.getExchange());
                 batch.add(ContentProviderOperation.newInsert(AlertContract.Alert.CONTENT_URI)
-                        .withValue(AlertContract.Alert.COL_ID, article.getId())
-                        .withValue(AlertContract.Alert.COL_TITLE, article.getTitle())
-                        .withValue(AlertContract.Alert.COL_CONTENT, article.getContent())
-                        .withValue(AlertContract.Alert.COL_LINK, article.getLink())
+                        .withValue(AlertContract.Alert.COL_ID, article.getAlertId())
+                        .withValue(AlertContract.Alert.COL_EXCHANGE, article.getExchange())
+                        .withValue(AlertContract.Alert.COL_COURSE, article.getCourse())
+                        .withValue(AlertContract.Alert.COL_CURRENCY, article.getCurrency())
+                        .withValue(AlertContract.Alert.COL_ENABLE_ALARM, article.getEnableAlarm())
                         .build());
                 syncResult.stats.numInserts++;
             }
