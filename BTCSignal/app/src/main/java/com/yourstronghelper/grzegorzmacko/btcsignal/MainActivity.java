@@ -4,6 +4,8 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -44,6 +46,8 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import android.os.*;
+
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -55,7 +59,73 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 public class MainActivity extends AppCompatActivity {
-    ListView listView;
+    /**
+     * This is our example content observer.
+     */
+    private ArticleObserver articleObserver;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Create your sync account
+        AccountGeneral.createSyncAccount(this);
+
+        // Perform a manual sync by calling this:
+        SyncAdapter.performSync();
+
+
+        // Setup example content observer
+        articleObserver = new ArticleObserver();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Register the observer at the start of our activity
+        getContentResolver().registerContentObserver(
+                AlertContract.Alert.CONTENT_URI, // Uri to observe (our articles)
+                true, // Observe its descendants
+                articleObserver); // The observer
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (articleObserver != null) {
+            // Unregister the observer at the stop of our activity
+            getContentResolver().unregisterContentObserver(articleObserver);
+        }
+    }
+
+    private void refreshArticles() {
+        Log.i(getClass().getName(), "Articles data has changed!");
+    }
+
+
+    /**
+     * Example content observer for observing article data changes.
+     */
+    private final class ArticleObserver extends ContentObserver {
+        private ArticleObserver() {
+            // Ensure callbacks happen on the UI thread
+            super(new Handler(Looper.getMainLooper()));
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            // Handle your data changes here!!!
+            refreshArticles();
+        }
+    }
+    static Context context;
+    static AlertDatabaseAdapter alertDatabaseAdapter;
+    //old version
+ /*   ListView listView;
     static ArrayList<Alert> dataModels;
     AlertAdapter adapter;
    static AlertDatabaseAdapter alertDatabaseAdapter;
@@ -101,11 +171,11 @@ public class MainActivity extends AppCompatActivity {
         mAccount = CreateSyncAccount(this);
     }
 
-    /**
+    *//**
      * Create a new dummy account for the sync adapter
      *
      * @param context The application context
-     */
+     *//*
     public static Account CreateSyncAccount(Context context) {
         // Create the account type and default account
         Account newAccount = new Account(
@@ -114,22 +184,22 @@ public class MainActivity extends AppCompatActivity {
         AccountManager accountManager =
                 (AccountManager) context.getSystemService(
                         ACCOUNT_SERVICE);
-        /*
+        *//*
          * Add the account and account type, no password or user data
          * If successful, return the Account object, otherwise report an error.
-         */
+         *//*
         if (accountManager.addAccountExplicitly(newAccount, null, null)) {
-            /*
+            *//*
              * If you don't set android:syncable="true" in
              * in your <provider> element in the manifest,
              * then call context.setIsSyncable(account, AUTHORITY, 1)
              * here.
-             */
+             *//*
         } else {
-            /*
+            *//*
              * The account exists or some other error occurred. Log this, report it,
              * or handle it internally.
-             */
+             *//*
         }
     }
 
@@ -300,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
         alertDatabaseAdapter.close();
         return dataModels;
     }
-
+*/
     public static void updateRowsDb(String alertId, int enableAlarm){
 
         //An instance database was initialized and a connection was established
