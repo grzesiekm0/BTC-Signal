@@ -16,26 +16,27 @@ import android.support.annotation.Nullable;
  */
 public class StubProvider extends ContentProvider {
     // Creates a UriMatcher object.
-    private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    private static final UriMatcher uriMatcher;
 
     static {
         /*
          * The calls to addURI() go here, for all of the content URI patterns that the provider
          * should recognize. For this snippet, only the calls for table 3 are shown.
          */
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
         /*
          * Sets the integer value for multiple rows in table 3 to 1. Notice that no wildcard is used
          * in the path
          */
-        uriMatcher.addURI("com.example.app.provider", "Alert", 1);
+        uriMatcher.addURI("com.example.sync", "Alert", 1);
 
         /*
          * Sets the code for a single row to 2. In this case, the "#" wildcard is
          * used. "content://com.example.app.provider/table3/3" matches, but
          * "content://com.example.app.provider/table3 doesn't.
          */
-        uriMatcher.addURI("com.example.app.provider", "Alert/#", 2);
+        uriMatcher.addURI("com.example.sync", "Alert/#", 2);
     }
     private SQLiteDatabase db;
     /*
