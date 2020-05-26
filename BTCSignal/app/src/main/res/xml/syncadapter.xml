@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <sync-adapter
+<<<<<<< HEAD
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:contentAuthority="com.example.sync"
 android:accountType="com.example.syncaccount"
@@ -7,3 +8,12 @@ android:userVisible="true"
 android:allowParallelSyncs="false"
 android:isAlwaysSyncable="true"
 android:supportsUploading="true"/>
+=======
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:contentAuthority="com.example.sync"
+    android:accountType="com.example.syncaccount"
+    android:userVisible="true"
+    android:supportsUploading="false"
+    android:allowParallelSyncs="false"
+    android:isAlwaysSyncable="true"/>
+>>>>>>> 2f0150ea3af57e1444ac1140302a2385ff2554cf

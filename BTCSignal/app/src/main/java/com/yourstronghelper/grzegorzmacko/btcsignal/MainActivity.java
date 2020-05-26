@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This is our example content observer.
      */
-    private ArticleObserver articleObserver;
+    private AlertObserver alertObserver;
 
 
     @Override
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Setup example content observer
-        articleObserver = new ArticleObserver();
+        alertObserver = new AlertObserver();
     }
 
     @Override
@@ -98,16 +98,16 @@ public class MainActivity extends AppCompatActivity {
         getContentResolver().registerContentObserver(
                 ArticleContract.Articles.CONTENT_URI, // Uri to observe (our articles)
                 true, // Observe its descendants
-                articleObserver); // The observer
+               alertObserver); // The observer
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        if (articleObserver != null) {
+        if (alertObserver != null) {
             // Unregister the observer at the stop of our activity
-            getContentResolver().unregisterContentObserver(articleObserver);
+            getContentResolver().unregisterContentObserver(alertObserver);
         }
     }
 
@@ -119,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Example content observer for observing article data changes.
      */
-    private final class ArticleObserver extends ContentObserver {
-        private ArticleObserver() {
+    private final class AlertObserver extends ContentObserver {
+        private AlertObserver() {
             // Ensure callbacks happen on the UI thread
             super(new Handler(Looper.getMainLooper()));
         }

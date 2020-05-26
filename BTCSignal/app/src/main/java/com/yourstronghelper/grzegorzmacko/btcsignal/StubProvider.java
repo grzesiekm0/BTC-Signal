@@ -16,13 +16,14 @@ import android.support.annotation.Nullable;
  */
 public class StubProvider extends ContentProvider {
     // Creates a UriMatcher object.
-    private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    private static final UriMatcher uriMatcher;
 
     static {
         /*
          * The calls to addURI() go here, for all of the content URI patterns that the provider
          * should recognize. For this snippet, only the calls for table 3 are shown.
          */
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
         /*
          * Sets the integer value for multiple rows in table 3 to 1. Notice that no wildcard is used
