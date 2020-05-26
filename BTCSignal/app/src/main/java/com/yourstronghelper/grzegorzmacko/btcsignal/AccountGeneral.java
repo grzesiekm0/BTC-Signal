@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
 
+
 public final class AccountGeneral {
     /**
      * This is the type of account we are using. i.e. we can specify our app or apps
@@ -41,7 +42,7 @@ public final class AccountGeneral {
 
         // Attempt to explicitly create the account with no password or extra data
         if (manager.addAccountExplicitly(account, null, null)) {
-            final String AUTHORITY = AlertContract.CONTENT_AUTHORITY;
+            final String AUTHORITY = ArticleContract.CONTENT_AUTHORITY;
             final long SYNC_FREQUENCY = 60 * 60; // 1 hour (seconds)
 
             // Inform the system that this account supports sync

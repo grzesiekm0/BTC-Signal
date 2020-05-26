@@ -1,16 +1,13 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
-
-import java.io.Serializable;
-
-public class Alert implements Serializable {
-    private  String alertId;
+public class Alert {
+    private String alertId;
     private String exchange;
     private String course;
     private String currency;
     private int enableAlarm;
 
-    public Alert(String alertId, String exchange, String currency, String course,  int enableAlarm) {
+    public Alert(String alertId, String exchange, String currency, String course, int enableAlarm) {
         this.alertId = alertId;
         this.exchange = exchange;
         this.course = course;
@@ -18,7 +15,8 @@ public class Alert implements Serializable {
         this.enableAlarm = enableAlarm;
     }
 
-    public Alert(){}
+    public Alert() {
+    }
 
     public String getAlertId() {
         return alertId;

@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-/**
- * This is used only by Android to run our {@link AccountAuthenticator}.
- */
 public class AuthenticatorService extends Service {
     private AccountAuthenticator authenticator;
 

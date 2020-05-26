@@ -5,6 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import static com.yourstronghelper.grzegorzmacko.btcsignal.AlertContract.DB_NAME;
+import static com.yourstronghelper.grzegorzmacko.btcsignal.AlertContract.DB_VERSION;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
     //private final Context context;
     private static volatile DataBaseHelper instance;
@@ -15,7 +19,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         this.context = context;
     }*/
     private DataBaseHelper(Context c) {
-        super(c, "database.db", null, 1);
+        super(c, DB_NAME, null, DB_VERSION);
         this.db = getWritableDatabase();
     }
     /**
@@ -61,7 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Create a new one.
         onCreate(_db);*/
         // Update any SQLite tables here
-        db.execSQL("DROP TABLE IF EXISTS [Alert];");
+        db.execSQL("DROP TABLE IF EXISTS [" + AlertContract.Alert.NAME + "];");
         onCreate(db);
     }
 
@@ -78,6 +82,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @param db {@link SQLiteDatabase}
      */
     private void createAlertsTable(SQLiteDatabase db) {
-        db.execSQL("create table Alert( AlertId integer primary key autoincrement,Exchange  text,Currency  text, Course text, EnableAlarm integer); ");
+        db.execSQL("create table [" + AlertContract.Alert.NAME + "]" +
+                "( [" + AlertContract.Alert.COL_ID + "] integer primary key autoincrement," +
+                "[" + AlertContract.Alert.COL_EXCHANGE + "]  text,[" + AlertContract.Alert.COL_CURRENCY + "]  text," +
+                " [" + AlertContract.Alert.COL_COURSE + "] text, [" + AlertContract.Alert.COL_ENABLE_ALARM + "] integer); ");
     }
 }

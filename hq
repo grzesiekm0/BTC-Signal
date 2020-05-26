@@ -1,0 +1,481 @@
+[33mcommit 52b65ef6ce8826e91a3b6962056acd80134d7748[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 24 12:08:12 2019 +0200
+
+    Download rows method was chenged for new field alertId.
+
+[33mcommit b8d8daca656823684d0ab92e87289373f0052efa[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 24 11:44:56 2019 +0200
+
+    Model alert has been changed. AlertId has been added to model.
+
+[33mcommit 0a507559411d87424af79040d4af3aebc75f1655[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 24 10:18:48 2019 +0200
+
+    Enable alaram method has been created and implemented. Code has been refactored.
+
+[33mcommit 85cfed76decf6784022db0011bfeba6e0338afdf[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Fri Jun 21 15:33:13 2019 +0200
+
+    Method to update enable field to datebase has been created.
+
+[33mcommit 2fe2cb9184f10556cf890c744e3f136d754abfe2[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Fri Jun 21 14:46:45 2019 +0200
+
+    Switch listener has been added to listview.
+
+[33mcommit a2e94dd1c453ebdee7101c02c0bebbb78e899227[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Fri Jun 21 13:54:03 2019 +0200
+
+    Switch on/off alert has been implemented.
+
+[33mcommit 7c0f7c32c3f253a87f38732e04a998f84c2dd27a[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Tue Jun 18 14:03:52 2019 +0200
+
+    Deafult values has been added to the form in the adding alerts view.
+
+[33mcommit cf49395b9bdbd6a51d57c9f8cf7151a8380a0b04[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Tue Jun 18 13:53:35 2019 +0200
+
+    In the view that adds alerts, the implementation of the AddAlert button in the menu has been changed. The button resets all form fields.
+
+[33mcommit 323eb4ec908bdec22c9f77d20f8005b3179e0fd0[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Tue Jun 18 09:42:55 2019 +0200
+
+    Tollbar with icons has been added to the adding activity.
+
+[33mcommit efdbd16fcabec7a7cd8a59568dc8e8671f715ea7[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 17 15:36:40 2019 +0200
+
+    The return button has been handled.
+
+[33mcommit 37349159a6e02ed0d4ad35f1952aa09c0c2ae4f7[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 17 11:47:23 2019 +0200
+
+    TextView has been added to the main view for api response.
+
+[33mcommit 44af872e01e0c5e3a2d93f64c9341eaaa0a663a1[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 17 11:46:02 2019 +0200
+
+    Api example request has been implemented and  code has been improved by separating the methods.
+
+[33mcommit 55e0ed760b7a58edd06a46b7053fd90e33c08abe[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 17 10:33:23 2019 +0200
+
+    Permision internet has been added to project.
+
+[33mcommit 310696637612cb80f696e62f18f6d315d596a92b[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 17 10:28:38 2019 +0200
+
+    Volley dependencies has been added to project.
+
+[33mcommit d8885a6239117257d006841c07d6c0ce7decd2b5[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Thu Jun 13 14:19:52 2019 +0200
+
+    Icon to synchronization has been implemented.
+
+[33mcommit 8e94c83caae0a4eae21e44e4a657ed5585a0b91d[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Thu Jun 13 14:18:36 2019 +0200
+
+    Icon to synchronization has been added.
+
+[33mcommit 01d805a882f4cc486311b3cbb1c3c60e867f4a13[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 10 14:37:32 2019 +0200
+
+    Button which start  AddAlertActivity has been added.
+
+[33mcommit 8c4727bb45b27a687cee9113ac6596f63da32078[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 10 14:28:33 2019 +0200
+
+    New adding alerts icon has been added and renamed.
+
+[33mcommit a25b2db9cea787afc63a5c8f787e11146597c540[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 10 13:58:07 2019 +0200
+
+    Toolbar view and test date has been created.  Toolbar has been added to main activity.
+
+[33mcommit f33e8af7d9a932c778d96f6a438b53f023f3b6db[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 10 12:16:23 2019 +0200
+
+    Important xml files for toolbar has been added.
+
+[33mcommit 08d438c8b98a1faa0e19a4e9109e8d72d7f2efbf[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 10 11:43:45 2019 +0200
+
+    Activity to adding alerts has been renamed.
+    Old record LoginActivity2 has been removed from manifest file.
+    a
+
+[33mcommit 6003b04ac74b905ef812a0e0bd55632690c63929[m
+Author: Grzesiek Macko <grzmacko@gmail.com>
+Date:   Mon Jun 10 09:00:04 2019 +0200
+
+    Configuration gradle settings.
+
+[33mcommit e97b47b8f008ebb0c0271df2269ed5ae6c359179[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Fri Jun 7 23:32:59 2019 +0200
+
+    Toolbar has been added to AddAlerActivity.
+
+[33mcommit 2b3ff443caa7def312869a40a42ef12cd16de955[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Fri Jun 7 23:12:38 2019 +0200
+
+    Convert spinner value has been fixed.
+
+[33mcommit 86801e6260279b0858e30c6bcdf1cee42dfb80f5[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Jun 6 23:57:16 2019 +0200
+
+    Code has been refactored and comments hass been added.
+
+[33mcommit 5db82215201d54dc894389851332b560542f7f61[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue Jun 4 21:42:32 2019 +0200
+
+    Elements of view has been implements and adding alert to datebase has been fixed.
+
+[33mcommit d70848032df9ae661a4455c07253c56fa6c70a40[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 28 20:55:06 2019 +0200
+
+    Setting upgrade table has been fixed.
+
+[33mcommit a162553294f9544e2ef75f60d28b4e8845b9fe91[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 28 20:53:23 2019 +0200
+
+    Query for the getting datebase on table has been changed.
+
+[33mcommit a3d13ca3de48ffcfc5f08faef4492cbdb49e0aa0[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 28 20:49:55 2019 +0200
+
+    Variables has been renamed and code has been refactored.
+
+[33mcommit b8b8b0f9e4a3c1c74a5d4f96a158b43953fb30da[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Mon May 27 23:19:22 2019 +0200
+
+    Second spinner has been implemented.
+
+[33mcommit a64776b39ec601c9690fea1cffa1a8c76d847766[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Mon May 27 23:16:43 2019 +0200
+
+    Spinner has been implemented.
+
+[33mcommit 543c33153b1a629a0188f3eac47316b1455e50c3[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Fri May 24 00:08:26 2019 +0200
+
+    Data source for alert listview has been changed on the  database.
+
+[33mcommit ba1551f092cd539aa73fc74411c06af79c1ed2d7[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu May 23 23:43:47 2019 +0200
+
+    New method for fetch all rows of datebase has been created.
+
+[33mcommit 94a20e0cbf52b3581e41f0e6dd9f6f3050d38a1c[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu May 23 23:41:55 2019 +0200
+
+    New empty constructor for Alert model has been adde.
+
+[33mcommit 69961e1f2b4d70cd68fc55be1fbefa84fc156b28[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun May 19 22:53:11 2019 +0200
+
+    String value has been translated and modernized.
+
+[33mcommit a0d59013a38933ba9e09eb0cd05e464181890f5a[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun May 19 22:51:17 2019 +0200
+
+    Fields of  view login has been modernized.
+
+[33mcommit 5500655c13d1543df4e245d269aea93e800fd553[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun May 19 22:50:13 2019 +0200
+
+    Fields of  view has been modernized.
+
+[33mcommit b0172f2216a31b14290acd06c9563245cd440ddf[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Fri May 17 23:38:13 2019 +0200
+
+    The sample object data has been added
+
+[33mcommit 1e53ede3dfe003dc7bfb50bb6ac983311f83038e[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Fri May 17 23:34:00 2019 +0200
+
+    Text in toast has been changed
+
+[33mcommit 68201a87e09045f3392ab1125b470e2f4b50c4c0[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Fri May 17 00:07:20 2019 +0200
+
+    Adding alert layout has been modified.
+
+[33mcommit 1af2e14e75ce46631d13217af527045c88dff766[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu May 16 23:56:50 2019 +0200
+
+    An example implementation of the alert has been added.
+
+[33mcommit ba5b948148f21a4ec0542fcc85c23ccca6044098[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu May 16 23:51:53 2019 +0200
+
+    Database closing has been added.
+
+[33mcommit a37956cd66ce1d9f6a4bd09079ed5519f57b5a2e[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 14 23:58:32 2019 +0200
+
+    The new table has been included in the database.
+
+[33mcommit 27f2b9e86cf97efe4a1792fadc04c82625e2abfe[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 14 23:57:05 2019 +0200
+
+    Datebase alert model has been implemented.
+
+[33mcommit a7575ca457aa066a38d3f32551591f0f00210b14[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 14 23:55:27 2019 +0200
+
+    New database adapter for alerts has been created.
+
+[33mcommit fbee1f3294bdb3d960db05c87fa704a5d9ee5469[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Mon May 13 22:38:59 2019 +0200
+
+    Buttons and edittext for layout has been added.
+
+[33mcommit ce47334509523b3ad529ca8b587eabebfde9f11c[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Mon May 13 22:38:08 2019 +0200
+
+    Intent filter dla adding activity has been added.
+
+[33mcommit d962c89aa4f16d0a86a24e369ff9c5e3a4a89e45[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Mon May 13 22:35:23 2019 +0200
+
+    Activity to adding alert has been created.
+
+[33mcommit f5bbf068c5dae2cc23f5de50c2b6ff172d25e8e8[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed May 8 22:02:05 2019 +0200
+
+    String variables for adding users has been translated.
+
+[33mcommit b799e7774401a6145aa361df3e002eab09a91d1e[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed May 8 22:00:23 2019 +0200
+
+    A toast was translated after positive addition of the user
+
+[33mcommit 96c038bf79c6f98fe2e05e5b549f9efd0a7a18ca[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed May 8 21:54:11 2019 +0200
+
+    Implements sqlite and rename variables has been completed.
+
+[33mcommit 80d0ebb193ab282274a83546600d1dbb88d0d8b1[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 7 23:17:55 2019 +0200
+
+    Created table in this class and needed methods for service
+
+[33mcommit 0807f6b2dead40dcf253123ecdd9cb1b7cfea8fd[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 7 23:13:40 2019 +0200
+
+    Version datebase etc has been customized.
+
+[33mcommit 262adf06b2fd2fa7c2a46c42774277c9ac7beac3[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue May 7 23:11:51 2019 +0200
+
+    New class for sqlite datebase has been created.
+
+[33mcommit 4aaebd51ec99478ff66c5d2c3fb2db9abbf766ca[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun May 5 21:12:17 2019 +0200
+
+    Name variables has been changed.
+
+[33mcommit f485e895175541da5c535341bf4b34e98cbd8729[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun May 5 21:08:41 2019 +0200
+
+    Intent filter has been added for new register form.
+
+[33mcommit ff7cc57d1f3ced52e18ea286fe5796948f9433f8[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun May 5 21:06:40 2019 +0200
+
+    New register form has been added.
+
+[33mcommit 04cd8171ec5ed5522da93d992548787da03fbe14[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Mon Apr 29 23:23:01 2019 +0200
+
+    Login activity has been customized.
+
+[33mcommit ecc3822106fa741b40d705fd49285cb10c48d078[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Apr 25 22:52:07 2019 +0200
+
+    Layout for sms alert has been modified.
+
+[33mcommit 0700a1bee26ccfdf6d3671b339261432a721cd6d[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Apr 25 22:49:39 2019 +0200
+
+    Model data for users has been created.
+
+[33mcommit 2cc590891f5ed9b120c83162aeaaae5b2ae68ee2[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Apr 25 22:48:29 2019 +0200
+
+    Model data for webservice to sent sms has been created.
+
+[33mcommit fb6a7ac928d7ba9ab196e9b15c03e8fd550509d0[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue Apr 23 23:26:57 2019 +0200
+
+    Adapter has been changed for new alert model.
+
+[33mcommit c21f7e35ed87eff63a8874173c63578e6159ea79[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue Apr 23 23:25:05 2019 +0200
+
+    Structure of Alert model has been changed.
+
+[33mcommit aee1780383792be0501b682c5de66ea403ef7563[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Tue Apr 23 23:21:38 2019 +0200
+
+    Login activity has been added.
+
+[33mcommit 8e5a43e7ab4c14a771b0d55dbd96c63e44f9318d[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Apr 18 22:30:17 2019 +0200
+
+    List view layout has been changed for new simple view.
+
+[33mcommit 393a0c26acc625089ea928ec950d28c258a92616[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Apr 18 22:28:22 2019 +0200
+
+    Variables names has been refactored.
+
+[33mcommit c2fc90d330e588717d1239cc390fdcb907cb67d0[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Thu Apr 18 22:26:48 2019 +0200
+
+    Model has been reafactored for new simple idea.
+
+[33mcommit 004b2703f295d3be51be42e764c5e3d581b550e7[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun Apr 14 17:19:35 2019 +0200
+
+    Click example fields and set data has been added.
+
+[33mcommit e288ff802f2fdf2af2972bd376e8733d98f75bce[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sun Apr 14 17:13:26 2019 +0200
+
+    Fields in the layout item has been renamed.
+
+[33mcommit 0f4e04531b01cfed2fcc7cc9150b22b48809e5ec[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Apr 10 22:33:35 2019 +0200
+
+    Listview name has been changed.
+
+[33mcommit ffc3d5fa354aed18d175085561f65043a67ff1ee[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Apr 10 22:32:22 2019 +0200
+
+    Adapter for listview to main activity has been set.
+
+[33mcommit 7ad7366def4df808b811aaf548d6dc9442a01a08[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Apr 10 22:29:53 2019 +0200
+
+    Template adapter for list view has been added.
+
+[33mcommit e898ce8cee5fc793aa5a41a68dacd0ca8b5ee365[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Feb 27 23:04:06 2019 +0100
+
+    Layout rows for list view has been created.
+
+[33mcommit bd9d1950d28028ab7ea7fdcf7de5fdea44f18f39[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Feb 27 23:02:59 2019 +0100
+
+    Adapter for list view has been created.
+
+[33mcommit 4b957816a4e41caecabf976410f927ee48262ad0[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Feb 27 23:00:34 2019 +0100
+
+    Name for listview has been added.
+
+[33mcommit 2f50bef0133fa9edb0b21f81889ff1cc7c72ed04[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Feb 27 22:59:12 2019 +0100
+
+    Fields model, constructor and getters setters has been added.
+
+[33mcommit 0b9959a1565045366e02cb0c3a3863a1a44289cb[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Feb 27 22:55:12 2019 +0100
+
+    ALert model data has been created.
+
+[33mcommit 98fc95a35025360b475d2c1ff56f693a137ccc0d[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Wed Feb 27 00:05:34 2019 +0100
+
+    Action bar has been added.
+
+[33mcommit ecb94b2237514f350e346bb284df31d01c5f789c[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sat Feb 23 18:05:00 2019 +0100
+
+    Field for form has been added.
+
+[33mcommit 1f16ccff568b9b1e5388bae0a643609cd4694ab2[m
+Author: Grzegorz Macko <grzmacko@gmail.com>
+Date:   Sat Feb 23 17:53:13 2019 +0100
+
+    Project has been created.

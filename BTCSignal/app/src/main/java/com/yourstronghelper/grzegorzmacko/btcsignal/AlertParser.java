@@ -8,7 +8,7 @@ import org.json.JSONObject;
 public class AlertParser {
     public static Alert parse(JSONObject jsonArticle) {
         Alert alert = new Alert();
-        alert.setAlertId(jsonArticle.optString("id"));
+        alert.setAlertId(jsonArticle.optString("alertId"));
         alert.setExchange(jsonArticle.optString("exchange"));
         alert.setCurrency(jsonArticle.optString("currency"));
         alert.setCourse(jsonArticle.optString("course"));

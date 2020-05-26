@@ -6,46 +6,29 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 /**
- * Define a Service that returns an <code><a href="/reference/android/os/IBinder.html">IBinder</a></code> for the
- * sync adapter class, allowing the sync adapter framework to call
- * onPerformSync().
+ * This is used only by Android to run our {@link SyncAdapter}.
  */
 public class SyncService extends Service {
-    // Storage for an instance of the sync adapter
-    private static SyncAdapter sSyncAdapter = null;
-    // Object to use as a thread-safe lock
-    private static final Object sSyncAdapterLock = new Object();
-    /*
-     * Instantiate the sync adapter object.
+    /**
+     * Lock use to synchronize instantiation of SyncAdapter.
      */
+    private static final Object LOCK = new Object();
+    private static SyncAdapter syncAdapter;
+
+
     @Override
     public void onCreate() {
-        /*
-         * Create the sync adapter as a singleton.
-         * Set the sync adapter as syncable
-         * Disallow parallel syncs
-         */
-        synchronized (sSyncAdapterLock) {
-           /* if (sSyncAdapter == null) {
-                sSyncAdapter = new SyncAdapter(getApplicationContext(), true);
-            }*/
-            sSyncAdapter = new SyncAdapter(this, false);
+        // SyncAdapter is not Thread-safe
+        synchronized (LOCK) {
+            // Instantiate our SyncAdapter
+            syncAdapter = new SyncAdapter(this, false);
         }
     }
-    /**
-     * Return an object that allows the system to invoke
-     * the sync adapter.
-     *
-     */
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        /*
-         * Get the object that allows external processes
-         * to call onPerformSync(). The object is created
-         * in the base class code when the SyncAdapter
-         * constructors call super()
-         */
-        return sSyncAdapter.getSyncAdapterBinder();
+        // Return our SyncAdapter's IBinder
+        return syncAdapter.getSyncAdapterBinder();
     }
 }
