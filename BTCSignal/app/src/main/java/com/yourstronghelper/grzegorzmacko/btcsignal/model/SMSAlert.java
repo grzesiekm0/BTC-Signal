@@ -1,4 +1,4 @@
-package com.yourstronghelper.grzegorzmacko.btcsignal;
+package com.yourstronghelper.grzegorzmacko.btcsignal.model;
 
 import java.io.Serializable;
 

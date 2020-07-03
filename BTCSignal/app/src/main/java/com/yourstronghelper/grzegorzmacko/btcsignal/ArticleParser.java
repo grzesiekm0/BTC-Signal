@@ -1,5 +1,7 @@
 package com.yourstronghelper.grzegorzmacko.btcsignal;
 
+import com.yourstronghelper.grzegorzmacko.btcsignal.model.Article;
+
 import org.json.JSONObject;
 
 /**

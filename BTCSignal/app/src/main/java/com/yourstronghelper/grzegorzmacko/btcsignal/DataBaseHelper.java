@@ -18,7 +18,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
         this.context = context;
     }*/
-    private DataBaseHelper(Context c) {
+    public DataBaseHelper(Context c) {
         super(c, DB_NAME, null, DB_VERSION);
         this.db = getWritableDatabase();
     }

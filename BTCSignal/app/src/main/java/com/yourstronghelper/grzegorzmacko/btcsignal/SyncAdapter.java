@@ -13,21 +13,16 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
 
-import android.content.res.AssetManager;
+import com.yourstronghelper.grzegorzmacko.btcsignal.model.Alert;
 
-import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -48,7 +43,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
 /*import javax.net.ssl.TrustManagerFactory;*/
-import org.apache.http.conn.ssl.SSLSocketFactory;
+
 /**
  * This is used by the Android framework to perform synchronization. IMPORTANT: do NOT create
  * new Threads to perform logic, Android will do this for you; hence, the name.

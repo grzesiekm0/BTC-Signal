@@ -1,4 +1,4 @@
-package com.yourstronghelper.grzegorzmacko.btcsignal;
+package com.yourstronghelper.grzegorzmacko.btcsignal.model;
 
 public class User {
     private String numberPhone;
