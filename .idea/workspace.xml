@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08e3fc16-53ff-412c-831a-e591620a451b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/TestSyncActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/res/layout/activity_test_sync.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/AlertParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/AlertParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/ArticleParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/ArticleParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/DataBaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/DataBaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/SyncAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/SyncAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/Alert.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/Alert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/SMSAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/SMSAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTCSignal/app/src/main/java/com/yourstronghelper/grzegorzmacko/btcsignal/model/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,6 +19,15 @@
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1945707156">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="-601145174">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
@@ -35,8 +50,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -47,17 +60,14 @@
             <path>
               <item name="BTC-Signal" type="b2602c69:ProjectViewProjectNode" />
               <item name="BTC-Signal" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BTC-Signal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BTC-Signal" type="462c0819:PsiDirectoryNode" />
               <item name="BTCSignal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -92,20 +102,20 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1548" height="832" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32958305" />
-      <window_info id="Structure" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info id="Captures" order="0" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="TODO" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32958305" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
